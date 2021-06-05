@@ -22,6 +22,10 @@ public class Main {
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
         consumer.subscribe(Arrays.asList("inventory_purchases"));
         try {
+            
+            
+            // read the data from the topic, 
+            // output to a data file
             BufferedWriter writer = new BufferedWriter(new FileWriter("/home/cloud_user/output/output.dat", true));
             while (true) {
                 ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
